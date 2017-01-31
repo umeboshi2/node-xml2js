@@ -1,5 +1,5 @@
 {
-  "name": "xml2js",
+  "name": "xml2js-parseonly",
   "description": "Simple XML to JavaScript object converter.",
   "keywords": [
     "xml",
@@ -70,8 +70,7 @@
     "url": "https://github.com/Leonidas-from-XIV/node-xml2js.git"
   },
   "dependencies": {
-    "sax": ">=0.6.0",
-    "xmlbuilder": "^8.2.0"
+    "sax": ">=0.6.0"
   },
   "devDependencies": {
     "coffee-script": ">=1.10.0",
