@@ -1,6 +1,11 @@
 node-xml2js
 ===========
 
+This is forked from https://github.com/Leonidas-from-XIV/node-xml2js .  The 
+package was renamed to `xml2js-parseonly`. The xmlbuilder dependency was 
+removed, along with lodash requirement.The purpose is to save space, 
+maintain es5 compatibility, and use in the browser.
+
 Ever had the urge to parse XML? And wanted to access the data in some sane,
 easy way? Don't want to compile a C parser, for whatever reason? Then xml2js is
 what you're looking for!
@@ -9,8 +14,7 @@ Description
 ===========
 
 Simple XML to JavaScript object converter. It supports bi-directional conversion.
-Uses [sax-js](https://github.com/isaacs/sax-js/) and
-[xmlbuilder-js](https://github.com/oozcitak/xmlbuilder-js/).
+Uses [sax-js](https://github.com/isaacs/sax-js/).
 
 Note: If you're looking for a full DOM parser, you probably want
 [JSDom](https://github.com/tmpvar/jsdom).
@@ -18,14 +22,15 @@ Note: If you're looking for a full DOM parser, you probably want
 Installation
 ============
 
-Simplest way to install `xml2js` is to use [npm](http://npmjs.org), just `npm
-install xml2js` which will download xml2js and all dependencies.
+Simplest way to install `xml2js-parseonly` is to use 
+[npm](http://npmjs.org), just `npm install umeboshi2/node-xml2js` which 
+will download xml2js and all dependencies.
 
-xml2js is also available via [Bower](http://bower.io/), just `bower install
-xml2js` which will download xml2js and all dependencies.
 
 Usage
 =====
+
+`require 'xml2js-parseonly/src/xml2js'`
 
 No extensive tutorials required because you are a smart developer! The task of
 parsing XML should be an easy one, so let's make it so! Here's some examples.
@@ -139,26 +144,6 @@ truncates the output with `…`? Don't fear, there's also a solution for that,
 you just need to increase the `maxLength` limit by creating a custom inspector
 `var inspect = require('eyes').inspector({maxLength: false})` and then you can
 easily `inspect(result)`.
-
-XML builder usage
------------------
-
-Since 0.4.0, objects can be also be used to build XML:
-
-```javascript
-var fs = require('fs'),
-    xml2js = require('xml2js');
-
-var obj = {name: "Super", Surname: "Man", age: 23};
-
-var builder = new xml2js.Builder();
-var xml = builder.buildObject(obj);
-```
-
-At the moment, a one to one bi-directional conversion is guaranteed only for
-default configuration, except for `attrkey`, `charkey` and `explicitArray` options
-you can redefine to your taste. Writing CDATA is supported via setting the `cdata`
-option to `true`.
 
 Processing attribute, tag names and values
 ------------------------------------------
@@ -316,34 +301,6 @@ value})``. Possible options are:
     }
     ```
     Added in 0.4.6
-
-Options for the `Builder` class
--------------------------------
-These options are specified by ``new Builder({optionName: value})``.
-Possible options are:
-
-  * `rootName` (default `root` or the root key name): root element name to be used in case
-     `explicitRoot` is `false` or to override the root element name.
-  * `renderOpts` (default `{ 'pretty': true, 'indent': '  ', 'newline': '\n' }`):
-    Rendering options for xmlbuilder-js.
-    * pretty: prettify generated XML
-    * indent: whitespace for indentation (only when pretty)
-    * newline: newline char (only when pretty)
-  * `xmldec` (default `{ 'version': '1.0', 'encoding': 'UTF-8', 'standalone': true }`:
-    XML declaration attributes.
-    * `xmldec.version` A version number string, e.g. 1.0
-    * `xmldec.encoding` Encoding declaration, e.g. UTF-8
-    * `xmldec.standalone` standalone document declaration: true or false
-  * `doctype` (default `null`): optional DTD. Eg. `{'ext': 'hello.dtd'}`
-  * `headless` (default: `false`): omit the XML header. Added in 0.4.3.
-  * `allowSurrogateChars` (default: `false`): allows using characters from the Unicode
-    surrogate blocks.
-  * `cdata` (default: `false`): wrap text nodes in `<![CDATA[ ... ]]>` instead of
-    escaping when necessary. Does not add `<![CDATA[ ... ]]>` if it is not required.
-    Added in 0.4.5.
-
-`renderOpts`, `xmldec`,`doctype` and `headless` pass through to
-[xmlbuilder-js](https://github.com/oozcitak/xmlbuilder-js).
 
 Updating to new version
 =======================
