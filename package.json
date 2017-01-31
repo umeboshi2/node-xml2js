@@ -53,13 +53,7 @@
     "David Wood <david.p.wood@gmail.com> (http://codesleuth.co.uk/)",
     "Nicolas Maquet (https://github.com/nmaquet)"
   ],
-  "main": "./lib/xml2js",
-  "files": [
-    "lib"
-  ],
-  "directories": {
-    "lib": "./lib"
-  },
+  "main": "./src/xml2js",
   "scripts": {
     "test": "zap",
     "coverage": "nyc npm test && nyc report",
