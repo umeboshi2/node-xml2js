@@ -10,6 +10,7 @@ exports.processors = processors
 
 class exports.ValidationError extends Error
   constructor: (message) ->
+    super message
     @message = message
 
 exports.Parser = parser.Parser
